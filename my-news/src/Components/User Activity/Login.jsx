@@ -58,12 +58,20 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900 to-sky-700 px-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md"
+        className="bg-white/95 backdrop-blur-xl p-8 rounded-[32px] shadow-2xl border border-white/20 w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <div className="mb-6 text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-sky-600 font-semibold">
+            Welcome back
+          </p>
+          <h2 className="text-3xl font-bold text-slate-900 mt-3">Login to your account</h2>
+          <p className="text-sm text-slate-500 mt-2">
+            Secure access with JWT and automatic session expiration.
+          </p>
+        </div>
 
         {/* Error Message */}
         {error && (
@@ -103,22 +111,21 @@ export default function Login() {
           disabled={loading}
         />
 
-        {/* Button */}
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition"
+          className="w-full bg-sky-600 text-white py-3 rounded-2xl hover:bg-sky-700 disabled:bg-slate-300 disabled:text-slate-600 disabled:cursor-not-allowed transition"
         >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        {/* Link */}
-        <p className="text-sm mt-4 text-center">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-blue-600 hover:underline">
-            Register
+        <div className="mt-5 text-center text-sm text-slate-500">
+          <span>Need an account?</span>{" "}
+          <Link to="/register" className="text-sky-600 font-semibold hover:underline">
+            Register now
           </Link>
-        </p>
+        </div>
+        
       </form>
     </div>
   );

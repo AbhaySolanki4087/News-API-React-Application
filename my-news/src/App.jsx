@@ -6,7 +6,7 @@ import News from "./Components/News";
 import NewsDetail from "./Components/NewsDetail";
 import Login from "./Components/User Activity/Login";
 import Register from "./Components/User Activity/Register";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { ProtectedRoute } from "./Components/ProtectedRoute";
 
 function App() {

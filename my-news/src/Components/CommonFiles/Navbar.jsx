@@ -75,17 +75,28 @@ export default function Navbar() {
           ) : (
             <>
               <li>
-                <Link to="/login" className="hover:text-blue-600">
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-blue-600 text-white px-4 py-2 rounded-lg transition"
+                      : "text-slate-700 hover:text-blue-600 px-4 py-2 rounded-lg transition"
+                  }
+                >
                   Login
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/register"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-green-600 text-white px-4 py-2 rounded-lg transition"
+                      : "text-slate-700 hover:text-blue-600 px-4 py-2 rounded-lg transition"
+                  }
                 >
                   Register
-                </Link>
+                </NavLink>
               </li>
             </>
           )}
@@ -128,16 +139,28 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <NavLink to="/login" onClick={() => setOpen(false)} className="block">
+              <NavLink
+                to="/login"
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  isActive
+                    ? "block bg-slate-900 text-white px-4 py-2 rounded-lg transition"
+                    : "block text-slate-700 hover:text-blue-600 px-4 py-2 rounded-lg transition"
+                }
+              >
                 Login
               </NavLink>
-              <Link
+              <NavLink
                 to="/register"
                 onClick={() => setOpen(false)}
-                className="block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-center"
+                className={({ isActive }) =>
+                  isActive
+                    ? "block bg-blue-600 text-white px-4 py-2 rounded-lg transition text-center"
+                    : "block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-center"
+                }
               >
                 Register
-              </Link>
+              </NavLink>
             </>
           )}
         </div>

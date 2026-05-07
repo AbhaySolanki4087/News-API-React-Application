@@ -71,12 +71,20 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-900 via-slate-900 to-cyan-700 px-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md"
+        className="bg-white/95 backdrop-blur-xl p-8 rounded-[32px] shadow-2xl border border-white/20 w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+        <div className="mb-6 text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-emerald-600 font-semibold">
+            Create your account
+          </p>
+          <h2 className="text-3xl font-bold text-slate-900 mt-3">Register now</h2>
+          <p className="text-sm text-slate-500 mt-2">
+            Join and enjoy secure access with automatic token logout.
+          </p>
+        </div>
 
         {/* Error Message */}
         {error && (
@@ -144,18 +152,18 @@ export default function Register() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition"
+          className="w-full bg-emerald-600 text-white py-3 rounded-2xl hover:bg-emerald-700 disabled:bg-slate-300 disabled:text-slate-600 disabled:cursor-not-allowed transition"
         >
-          {loading ? "Registering..." : "Register"}
+          {loading ? "Registering..." : "Create account"}
         </button>
 
-        {/* Link */}
-        <p className="text-sm mt-4 text-center">
-          Already have an account?{" "}
-          <Link to="/login" className="text-blue-600 hover:underline">
-            Login
+        <div className="mt-5 text-center text-sm text-slate-500">
+          <span>Already registered?</span>{" "}
+          <Link to="/login" className="text-sky-600 font-semibold hover:underline">
+            Login here
           </Link>
-        </p>
+        </div>
+        
       </form>
     </div>
   );

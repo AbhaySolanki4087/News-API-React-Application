@@ -9,6 +9,7 @@ const getAuthHeader = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
+// Register user function
 export const registerUser = async (data) => {
   const res = await fetch(`${BASE_URL}/auth/register`, {
     method: "POST",
@@ -18,6 +19,7 @@ export const registerUser = async (data) => {
   return res.json();
 };
 
+// Login function
 export const loginUser = async (data) => {
   const res = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
@@ -27,6 +29,7 @@ export const loginUser = async (data) => {
   return res.json();
 };
 
+// Logout function
 export const logoutUser = async () => {
   const res = await fetch(`${BASE_URL}/auth/logout`, {
     method: "POST",
@@ -40,6 +43,7 @@ export const logoutUser = async () => {
   return res.json();
 };
 
+// Get current user function
 export const getCurrentUser = async () => {
   const res = await fetch(`${BASE_URL}/auth/me`, {
     method: "GET",

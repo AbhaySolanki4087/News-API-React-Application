@@ -69,7 +69,7 @@ export const login = async (req, res) => {
 
     // Also generate JWT for API calls
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, {
-      expiresIn: "24h",
+      expiresIn: "30m",
     });
 
     res.json({
