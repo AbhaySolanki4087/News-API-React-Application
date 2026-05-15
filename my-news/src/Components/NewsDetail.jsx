@@ -63,7 +63,7 @@ function NewsDetail() {
         {state.description || "No description available"}
       </p>
 
-      {/* Image */}
+      {/* Image - Always show */}
       <img
         src={
           fullContent?.image || state.urlToImage ||
@@ -79,32 +79,41 @@ function NewsDetail() {
       </p>
 
       {/* Content */}
-      <div className="mb-8">
+      <div className="mb-8 px-4 sm:px-6 lg:px-8 py-6">
         {contentLoading ? (
           <p className="text-center py-8 text-gray-500">Loading full content...</p>
         ) : fullContent?.content ? (
           <div>
-            <article className="prose prose-2xl max-w-none 
+            <article 
+              className="prose prose-2xl max-w-none 
               prose-headings:font-bold prose-headings:text-gray-900 
               prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12 
-              prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-10
-              prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8
-              prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
-              prose-p:text-lg prose-p:leading-8 prose-p:mb-6 prose-p:text-gray-700
+              prose-h2:text-3xl prose-h2:mb-8 prose-h2:mt-10
+              prose-h3:text-2xl prose-h3:mb-6 prose-h3:mt-8
+              prose-h4:text-xl prose-h4:mb-5 prose-h4:mt-6
+              prose-p:text-lg prose-p:leading-8 prose-p:mb-8 prose-p:text-gray-700
               prose-strong:text-gray-900 prose-strong:font-bold
               prose-em:text-gray-800 prose-em:italic
               prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-gray-700 prose-blockquote:bg-blue-50 prose-blockquote:py-4 prose-blockquote:px-4 prose-blockquote:my-8 prose-blockquote:rounded
               prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-800 prose-a:font-medium
-              prose-img:rounded-lg prose-img:my-8 prose-img:shadow-lg prose-img:max-w-full
+              prose-img:rounded-lg prose-img:my-8 prose-img:shadow-lg prose-img:max-w-full prose-img:h-auto prose-img:object-cover
               prose-li:text-lg prose-li:mb-3 prose-li:text-gray-700
-              prose-ul:my-8 prose-ul:ml-6
-              prose-ol:my-8 prose-ol:ml-6
+              prose-ul:my-8 prose-ul:ml-6 prose-ul:space-y-3
+              prose-ol:my-8 prose-ol:ml-6 prose-ol:space-y-3
               prose-code:bg-gray-200 prose-code:px-3 prose-code:py-1 prose-code:rounded prose-code:text-red-700 prose-code:font-mono prose-code:text-base
               prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-8 prose-pre:font-mono prose-pre:text-sm
-              prose-hr:my-8 prose-hr:border-gray-300
-              prose-table:my-8 prose-table:w-full prose-tbody:text-gray-700
+              prose-hr:my-12 prose-hr:border-gray-300
+              prose-table:my-8 prose-table:w-full prose-tbody:text-gray-700 prose-tbody:bg-white
               prose-td:py-3 prose-td:px-4 prose-th:py-3 prose-th:px-4 prose-th:bg-gray-100 prose-th:font-bold"
-              dangerouslySetInnerHTML={{ __html: fullContent.content }}
+              style={{
+                '--tw-prose-img-shadow': 'var(--tw-shadow-lg)',
+              }}
+              dangerouslySetInnerHTML={{ 
+                __html: fullContent.content
+                  .replace(/<img/g, '<img style="width: 100%; height: auto; border-radius: 8px; margin: 2rem 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);"') 
+                  .replace(/<p>/g, '<p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.125rem;">')
+                  .replace(/<\/p>\n<p>/g, '</p><div style="height: 0.5rem;"></div><p>')
+              }}
             />
             {fullContent.author && fullContent.author !== state.author && (
               <p className="text-base text-gray-600 mt-12 pt-6 border-t-2 border-gray-300 italic">By {fullContent.author}</p>
